@@ -8,5 +8,5 @@
 	},
 	"depends"		: [],
 	"source-url"	: "git://github.com/masterduke17/text-diff-sift4.git",
-	"perl"			: "6.c",
+	"perl"			: "6.c"
 }
