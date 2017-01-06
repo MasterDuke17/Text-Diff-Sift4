@@ -1,4 +1,5 @@
 use v6;
+use nqp;
 
 unit module Text::Diff::Sift4;
 
@@ -13,7 +14,7 @@ sub sift4(Str $s1, Str $s2, Int $maxOffset = 100, Int $maxDistance = 100 --> Int
 	my @offset_arr;
 
 	while $c1 < $l1 and $c2 < $l2 {
-		if substr($s1, $c1, 1) eq substr($s2, $c2, 1) {
+		if nqp::eqat($s1, nqp::substr($s2, $c2, 1), $c1) {
 			++$local_cs;
 			my Bool $isTrans = False;
 			my int $i = 0;
@@ -44,16 +45,16 @@ sub sift4(Str $s1, Str $s2, Int $maxOffset = 100, Int $maxDistance = 100 --> Int
 			$local_cs = 0;
 
 			if $c1 != $c2 {
-				$c1 = $c2 = min($c1, $c2);
+				$c1 = $c2 = ($c1 min $c2);
 			}
 
 			loop (my int $i = 0; $i < $maxOffset and ($c1 + $i < $l1 or $c2 + $i < $l2); ++$i) {
-				if ($c1 + $i < $l1) and (substr($s1, $c1 + $i, 1) eq substr($s2, $c2, 1)) {
+				if ($c1 + $i < $l1) and nqp::eqat($s1, nqp::substr($s2, $c2, 1), $c1 + $i) {
 					$c1 += $i - 1;
 					--$c2;
 					last;
 				}
-				if ($c2 + $i < $l2) and (substr($s1, $c1, 1) eq substr($s2, $c2 + $i, 1)) {
+				if ($c2 + $i < $l2) and nqp::eqat($s1, nqp::substr($s2, $c2 + $i, 1), $c1) {
 					$c2 += $i - 1;
 					--$c1;
 					last;
@@ -65,20 +66,20 @@ sub sift4(Str $s1, Str $s2, Int $maxOffset = 100, Int $maxDistance = 100 --> Int
 		++$c2;
 
 		if $maxDistance {
-			my int $tempDistance = max($c1, $c2) - $lcss + $trans;
-			return round($tempDistance) if $tempDistance >= $maxDistance;
+			my int $tempDistance = ($c1 max $c2) - $lcss + $trans;
+			return $tempDistance if $tempDistance >= $maxDistance;
 		}
 
 		if $c1 >= $l1 or $c2 >= $l2 {
 			$lcss += $local_cs;
 			$local_cs = 0;
-			$c1 = $c2 = min($c1, $c2);
+			$c1 = $c2 = ($c1 min $c2);
 		}
 	}
 
 	$lcss += $local_cs;
 
-	return round(max($l1, $l2) - $lcss + $trans);
+	return ($l1 max $l2) - $lcss + $trans;
 }
 
 # vim: ft=perl6
