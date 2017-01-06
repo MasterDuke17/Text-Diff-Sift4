@@ -3,7 +3,7 @@ use nqp;
 
 unit module Text::Diff::Sift4;
 
-sub sift4(Str $s1, Str $s2, Int $maxOffset = 100, Int $maxDistance = 100 --> Int) is export {
+sub sift4(Str() $s1, Str() $s2, Int $maxOffset = 100, Int $maxDistance = 100 --> Int) is export {
 	return !$s2 ?? 0 !! $s2.chars if !$s1 or !$s1.chars;
 	return $s1.chars if !$s2 or !$s2.chars;
 
