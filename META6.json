@@ -1,6 +1,6 @@
 {
 	"name"			: "Text::Diff::Sift4",
-	"license" : "Artistic-2.0",
+	"license"		: "Artistic-2.0",
 	"version"		: "1.4.0",
 	"description"	: "A quick string distance algorithm",
 	"authors"		: ["Daniel Green"],
@@ -9,5 +9,6 @@
 	},
 	"depends"		: [],
 	"source-url"	: "git://github.com/masterduke17/text-diff-sift4.git",
-	"perl"			: "6.c"
+	"perl"			: "6.c",
+	"tags"			: [ "Text", "Difference", "Diff", "Typos" ]
 }
