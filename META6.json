@@ -1,14 +1,23 @@
 {
-	"name"			: "Text::Diff::Sift4",
-	"license"		: "Artistic-2.0",
-	"version"		: "1.4.1",
-	"description"	: "A quick string distance algorithm",
-	"authors"		: ["Daniel Green"],
-	"provides"		: {
-		"Text::Diff::Sift4" : "lib/Text/Diff/Sift4.pm6"
-	},
-	"depends"		: [],
-	"source-url"	: "https://github.com/masterduke17/text-diff-sift4.git",
-	"perl"			: "6.c",
-	"tags"			: [ "Text", "Difference", "Diff", "Typos" ]
+  "auth": "github:masterduke17",
+  "authors": [
+    "Daniel Green"
+  ],
+  "depends": [],
+  "description": "A quick string distance algorithm",
+  "license": "Artistic-2.0",
+  "name": "Text::Diff::Sift4",
+  "perl": "6.c",
+  "provides": {
+    "Text::Diff::Sift4": "lib/Text/Diff/Sift4.rakumod"
+  },
+  "source-url": "https://github.com/masterduke17/text-diff-sift4.git",
+  "tags": [
+    "Text",
+    "Difference",
+    "Diff",
+    "Typos",
+    "Levenshtein"
+  ],
+  "version": "1.4.2"
 }
