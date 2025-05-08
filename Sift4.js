@@ -1,4 +1,4 @@
-// Reference implementation from http://siderite.blogspot.com/2014/11/super-fast-and-accurate-string-distance.html
+// Reference implementation from https://siderite.dev/blog/super-fast-and-accurate-string-distance.html
 
 // Sift4 - common version
 // online algorithm to compute the distance between two strings in O(n)
@@ -66,6 +66,12 @@ module.exports = {
 				if (c1 != c2) {
 					c1 = c2 = Math.min(c1, c2);  //using min allows the computation of transpositions
 				}
+				if (maxDistance) {
+					var temporaryDistance = Math.max(c1, c2) - lcss + trans;
+					if (temporaryDistance > maxDistance) {
+						return temporaryDistance;
+					}
+				}
 				//if matching characters are found, remove 1 from both cursors (they get incremented at the end of the loop)
 				//so that we can have only one code block handling matches 
 				for (var i = 0; i < maxOffset && (c1 +i < l1 || c2 + i < l2); i++) {
@@ -83,12 +89,6 @@ module.exports = {
 			}
 			c1++;
 			c2++;
-			if (maxDistance) {
-				var temporaryDistance = Math.max(c1, c2) - lcss + trans;
-				if (temporaryDistance >= maxDistance) {
-					return Math.round(temporaryDistance);
-				}
-			}
 			// this covers the case where the last match is on the last token in list, so that it can compute transpositions correctly
 			if ((c1 >= l1) || (c2 >= l2)) {
 				lcss += local_cs;
