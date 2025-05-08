@@ -1,7 +1,5 @@
 {
-  "auth": [
-    "zef:MasterDuke"
-  ],
+  "auth": "zef:MasterDuke",
   "authors": [
     "Daniel Green"
   ],
