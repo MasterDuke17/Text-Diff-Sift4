@@ -6,11 +6,11 @@ use Text::Diff::Sift4;
 
 is
 	sift4("xaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", "baaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", 10, 10),
-	10;
+	1;
 
 is
 	sift4("xaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", "baaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", 20, 20),
-	20;
+	1;
 
 is
 	sift4("xaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", "baaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", 20),
@@ -18,7 +18,7 @@ is
 
 is
 	sift4("xaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa", "baaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaa"),
-	20;
+	1;
 
 is
 	sift4("a", "a"),
@@ -36,11 +36,11 @@ is
 
 is
 	sift4("aa", "aa", 0, 1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", 0, 2),
-	2;
+	0;
 
 is
 	sift4("aa", "aa", 0, 3),
@@ -52,11 +52,11 @@ is
 
 is
 	sift4("aa", "aa", 1, 1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", 1, 2),
-	2;
+	0;
 
 is
 	sift4("aa", "aa", 1, 3),
@@ -68,11 +68,11 @@ is
 
 is
 	sift4("aa", "aa", 2, 1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", 2, 2),
-	2;
+	0;
 
 is
 	sift4("aa", "aa", 2, 3),
@@ -84,11 +84,11 @@ is
 
 is
 	sift4("aa", "aa", 3, 1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", 3, 2),
-	2;
+	0;
 
 is
 	sift4("aa", "aa", 3, 3),
@@ -96,15 +96,15 @@ is
 
 is
 	sift4("aa", "aa", -1, -1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", 1, -1),
-	1;
+	0;
 
 is
 	sift4("aa", "aa", -1, 1),
-	1;
+	0;
 
 is
 	sift4("aa", "aabb"),
